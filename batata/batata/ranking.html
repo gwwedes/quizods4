@@ -1,0 +1,28 @@
+<section id="view-ranking" class="view-section">
+    <div class="ranking-section">
+      <div class="ranking-header">
+        <div>
+          <h2><i class="fa-solid fa-trophy"></i> Ranking da Comunidade</h2>
+          <p>Os melhores jogadores registados no banco de dados</p>
+        </div>
+        <input type="text" id="ranking-search" class="search-input" placeholder="Buscar participante..." oninput="filterRanking()">
+      </div>
+  
+      <div class="ranking-table-wrapper">
+        <table class="ranking-table">
+          <thead>
+            <tr>
+              <th>Posição</th>
+              <th>Participante</th>
+              <th>Pontuação</th>
+              <th>Status</th>
+              <th>Medalha</th>
+            </tr>
+          </thead>
+          <tbody id="ranking-tbody">
+            <!-- Linhas do ranking preenchidas dinamicamente via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>

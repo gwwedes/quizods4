@@ -1,0 +1,43 @@
+<section id="view-ia" class="view-section">
+    <div class="ai-hero-card">
+      <div class="ai-header">
+        <div class="ai-title-wrapper">
+          <div class="ai-sparkle-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+          <div>
+            <h2>Análise de Inteligência Artificial (Diagnóstico IA)</h2>
+            <p>Relatório automatizado gerado a partir do seu histórico de respostas</p>
+          </div>
+        </div>
+        <button class="btn-ai-refresh" onclick="generateAIAnalysis()"><i class="fa-solid fa-arrows-rotate"></i> Atualizar IA</button>
+      </div>
+  
+      <div class="ai-body-grid">
+        <div class="ai-main-status">
+          <div class="ai-status-badge"><i class="fa-solid fa-graduation-cap"></i> Diagnóstico Ativo</div>
+          <h3 id="ai-performance-heading">Aguardando resultado do Quiz...</h3>
+          <p id="ai-performance-summary">Complete o quiz para gerar a análise de Inteligência Artificial sobre a ODS 4.</p>
+          <div class="ai-stats-pills">
+            <div class="pill">
+              <span class="label">Status</span>
+              <span class="val" id="ai-level">Pendente</span>
+            </div>
+            <div class="pill">
+              <span class="label">Ponto Forte</span>
+              <span class="val" id="ai-strong-point">-</span>
+            </div>
+            <div class="pill">
+              <span class="label">Recomendação</span>
+              <span class="val" id="ai-focus-area">-</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="ai-recommendations">
+          <h4><i class="fa-solid fa-compass"></i> Plano de Ação Personalizado:</h4>
+          <ul class="recommendations-list" id="ai-rec-list">
+            <li><i class="fa-solid fa-check"></i> Faça uma partida no Quiz para sincronizar as métricas de aprendizagem.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>

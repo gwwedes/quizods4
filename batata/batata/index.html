@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ODS 4 - Educação de Qualidade</title>
+
+  <!-- Estilos e Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Libs de Gráficos e Efeitos -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- Arquivo de CSS do projeto -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- BARRA DE NAVEGAÇÃO -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <div class="brand-icon"><i class="fa-solid fa-book-open"></i></div>
+      <div class="brand-text">
+        <span class="title">ODS 4</span>
+        <span class="subtitle">Educação de Qualidade</span>
+      </div>
+    </div>
+    <div class="nav-links">
+      <button class="nav-btn active" onclick="switchView('view-home')"><i class="fa-solid fa-house"></i> Início</button>
+      <button class="nav-btn" onclick="openLoginModal()"><i class="fa-solid fa-gamepad"></i> Quiz</button>
+      <button class="nav-btn" onclick="switchView('view-dashboard')"><i class="fa-solid fa-chart-line"></i> Dashboard</button>
+      <button class="nav-btn" onclick="switchView('view-ia')"><i class="fa-solid fa-wand-magic-sparkles"></i> Análise IA</button>
+      <button class="nav-btn" onclick="switchView('view-ranking')"><i class="fa-solid fa-trophy"></i> Ranking</button>
+    </div>
+  </nav>
+
+  <!-- ÁREA PRINCIPAL DAS TELAS -->
+  <main class="main-container">
+
+    <!-- 1. TELA INÍCIO -->
+    <section id="view-home" class="view-section active">
+      <div class="hero-section">
+        <div class="hero-content">
+          <div class="hero-badge"><i class="fa-solid fa-sparkles"></i> ODS 4 · EDUCAÇÃO DE QUALIDADE</div>
+          <h1 class="hero-title">TODO MUNDO MERECE UMA CHANCE</h1>
+          <p class="hero-subtitle">A educação pode ser o primeiro passo para mudar uma história. Teste os seus conhecimentos e confira o seu relatório de Inteligência Artificial no Dashboard.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="openLoginModal()">Fazer o Quiz <i class="fa-solid fa-arrow-right"></i></button>
+            <button class="btn btn-secondary" onclick="switchView('view-dashboard')"><i class="fa-solid fa-chart-pie"></i> Ver Dashboard</button>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="globe-orbit-container">
+            <div class="orbit-ring ring-outer"></div>
+            <div class="orbit-ring ring-inner"></div>
+            <div class="globe-center"><i class="fa-solid fa-earth-americas"></i></div>
+            <div class="node node-1"><i class="fa-solid fa-graduation-cap"></i></div>
+            <div class="node node-2"><i class="fa-solid fa-users"></i></div>
+            <div class="node node-3"><i class="fa-solid fa-lightbulb"></i></div>
+            <div class="node node-4"><i class="fa-solid fa-star"></i></div>
+          </div>
+        </div>
+      </div>
+
+      <section class="section-container vision-section">
+        <div class="section-header">
+          <span class="tag">NOSSA VISÃO</span>
+          <h2>O que acreditamos?</h2>
+        </div>
+        <p class="vision-text">Acreditamos que a educação de qualidade é a ferramenta mais poderosa para o desenvolvimento humano. Ela forma cidadãos críticos, promove a inclusão e abre caminhos para um mundo mais justo.</p>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-value">263M</span>
+            <span class="stat-label">crianças e jovens sem escola</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value">1/3</span>
+            <span class="stat-label">dos países possuem déficit educacional</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value">ODS 4</span>
+            <span class="stat-label">meta global de transformação até 2030</span>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- 2. TELA QUIZ -->
+    <section id="view-quiz" class="view-section">
+      <div class="quiz-container">
+        <div class="quiz-header">
+          <div class="user-badge" id="quiz-user-display">
+            <span id="quiz-user-avatar">👤</span>
+            <span id="quiz-user-name">Usuário</span>
+          </div>
+          <div class="quiz-timer"><i class="fa-solid fa-stopwatch"></i> Tempo: <span id="time">60</span>s</div>
+        </div>
+
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="progress" style="width: 0%;"></div>
+        </div>
+
+        <div class="quiz-card">
+          <span class="question-topic" id="category">Categoria: Carregando...</span>
+          <h2 class="question-title" id="question">Carregando pergunta do banco de dados...</h2>
+          <div class="options-grid" id="options-container">
+            <button class="option-btn answer" onclick="checkAnswer(0)"><span>Opção 1</span></button>
+            <button class="option-btn answer" onclick="checkAnswer(1)"><span>Opção 2</span></button>
+            <button class="option-btn answer" onclick="checkAnswer(2)"><span>Opção 3</span></button>
+            <button class="option-btn answer" onclick="checkAnswer(3)"><span>Opção 4</span></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. TELA DASHBOARD -->
+    <section id="view-dashboard" class="view-section">
+      <div class="dashboard-container">
+        
+        <div class="dashboard-header">
+          <div>
+            <h1 class="dash-title"><i class="fa-solid fa-chart-line"></i> Dashboard de Desempenho</h1>
+            <p class="dash-subtitle">Visualização de estatísticas do banco de dados e análises comparativas</p>
+          </div>
+          <button class="btn btn-primary" onclick="openLoginModal()"><i class="fa-solid fa-rotate-right"></i> Jogar Novamente</button>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-icon yellow"><i class="fa-solid fa-trophy"></i></div>
+            <div class="kpi-info">
+              <span class="kpi-title">Pontuação Atual</span>
+              <span class="kpi-value" id="score">0</span>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon teal"><i class="fa-solid fa-medal"></i></div>
+            <div class="kpi-info">
+              <span class="kpi-title">Recorde Pessoal</span>
+              <span class="kpi-value" id="high-score">0</span>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon blue"><i class="fa-solid fa-bullseye"></i></div>
+            <div class="kpi-info">
+              <span class="kpi-title">Aproveitamento</span>
+              <span class="kpi-value" id="dash-accuracy">0%</span>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon purple"><i class="fa-solid fa-ranking-star"></i></div>
+            <div class="kpi-info">
+              <span class="kpi-title">Posição no Ranking</span>
+              <span class="kpi-value" id="dash-rank">#1</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="charts-grid">
+          <div class="chart-card wide">
+            <div class="chart-header">
+              <h3><i class="fa-solid fa-chart-area"></i> Evolução em Onda</h3>
+              <span class="subtext">Acompanhamento contínuo vs Média Global</span>
+            </div>
+            <div class="chart-wrapper">
+              <canvas id="waveChart"></canvas>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3><i class="fa-solid fa-chart-pie"></i> Proporção de Acertos</h3>
+            </div>
+            <div class="chart-wrapper">
+              <canvas id="doughnutChart"></canvas>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3><i class="fa-solid fa-chart-column"></i> Média Geral</h3>
+            </div>
+            <div class="chart-wrapper">
+              <canvas id="topicBarChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. TELA INTELIGÊNCIA ARTIFICIAL -->
+    <section id="view-ia" class="view-section">
+      <div class="ai-hero-card">
+        <div class="ai-header">
+          <div class="ai-title-wrapper">
+            <div class="ai-sparkle-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <div>
+              <h2>Análise de Inteligência Artificial (Diagnóstico IA)</h2>
+              <p>Relatório automatizado gerado a partir do seu histórico de respostas</p>
+            </div>
+          </div>
+          <button class="btn-ai-refresh" onclick="generateAIAnalysis()"><i class="fa-solid fa-arrows-rotate"></i> Atualizar IA</button>
+        </div>
+
+        <div class="ai-body-grid">
+          <div class="ai-main-status">
+            <div class="ai-status-badge"><i class="fa-solid fa-graduation-cap"></i> Diagnóstico Ativo</div>
+            <h3 id="ai-performance-heading">Aguardando resultado do Quiz...</h3>
+            <p id="ai-performance-summary">Complete o quiz para gerar a análise de Inteligência Artificial sobre a ODS 4.</p>
+            <div class="ai-stats-pills">
+              <div class="pill">
+                <span class="label">Status</span>
+                <span class="val" id="ai-level">Pendente</span>
+              </div>
+              <div class="pill">
+                <span class="label">Ponto Forte</span>
+                <span class="val" id="ai-strong-point">-</span>
+              </div>
+              <div class="pill">
+                <span class="label">Recomendação</span>
+                <span class="val" id="ai-focus-area">-</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ai-recommendations">
+            <h4><i class="fa-solid fa-compass"></i> Plano de Ação Personalizado:</h4>
+            <ul class="recommendations-list" id="ai-rec-list">
+              <li><i class="fa-solid fa-check"></i> Faça uma partida no Quiz para sincronizar as métricas de aprendizagem.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="ai-report">
+          <h4><i class="fa-solid fa-book-open"></i> Relatório Detalhado (Passo a Passo, Estudo e Velocidade)</h4>
+          <div id="ai-report-body">O relatório detalhado aparece aqui depois do quiz.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. TELA RANKING -->
+    <section id="view-ranking" class="view-section">
+      <div class="ranking-section">
+        <div class="ranking-header">
+          <div>
+            <h2><i class="fa-solid fa-trophy"></i> Ranking da Comunidade</h2>
+            <p>Os melhores jogadores registados no banco de dados</p>
+          </div>
+          <input type="text" id="ranking-search" class="search-input" placeholder="Buscar participante..." oninput="filterRanking()">
+        </div>
+
+        <div class="ranking-table-wrapper">
+          <table class="ranking-table">
+            <thead>
+              <tr>
+                <th>Posição</th>
+                <th>Participante</th>
+                <th>Pontuação</th>
+                <th>Tempo</th>
+                <th>Status</th>
+                <th>Medalha</th>
+              </tr>
+            </thead>
+            <tbody id="ranking-tbody">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 6. MODAL CADASTRO / LOGIN -->
+  <div class="modal-overlay" id="login-modal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeLoginModal()"><i class="fa-solid fa-xmark"></i></button>
+      
+      <div class="modal-header">
+        <div class="modal-icon"><i class="fa-solid fa-user-astronaut"></i></div>
+        <h2>Cadastro / Identificação</h2>
+        <p>Insira os seus dados para registar a pontuação no banco de dados!</p>
+      </div>
+
+      <form id="login-form" onsubmit="handleUserSubmit(event)">
+        <div class="form-group">
+          <label for="username">Nome de Utilizador</label>
+          <input type="text" id="username" class="form-control" placeholder="Ex: Maria Silva" required>
+        </div>
+
+        <div class="form-group">
+          <label>Escolha o seu Avatar</label>
+          <div class="avatar-selector">
+            <label class="avatar-option">
+              <input type="radio" name="avatar" value="🎓" checked>
+              <span class="avatar-box">🎓</span>
+            </label>
+            <label class="avatar-option">
+              <input type="radio" name="avatar" value="🚀">
+              <span class="avatar-box">🚀</span>
+            </label>
+            <label class="avatar-option">
+              <input type="radio" name="avatar" value="🌟">
+              <span class="avatar-box">🌟</span>
+            </label>
+            <label class="avatar-option">
+              <input type="radio" name="avatar" value="💡">
+              <span class="avatar-box">💡</span>
+            </label>
+            <label class="avatar-option">
+              <input type="radio" name="avatar" value="🌍">
+              <span class="avatar-box">🌍</span>
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary full-width">Iniciar Quiz <i class="fa-solid fa-play"></i></button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Script JS Principal -->
+  <script src="script.js"></script>
+</body>
+</html>

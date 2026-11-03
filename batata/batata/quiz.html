@@ -1,0 +1,26 @@
+<section id="view-quiz" class="view-section">
+    <div class="quiz-container">
+      <div class="quiz-header">
+        <div class="user-badge" id="quiz-user-display">
+          <span id="quiz-user-avatar">👤</span>
+          <span id="quiz-user-name">Usuário</span>
+        </div>
+        <div class="quiz-timer"><i class="fa-solid fa-stopwatch"></i> Tempo: <span id="time">60</span>s</div>
+      </div>
+  
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progress" style="width: 0%;"></div>
+      </div>
+  
+      <div class="quiz-card">
+        <span class="question-topic" id="category">Categoria: Carregando...</span>
+        <h2 class="question-title" id="question">Carregando pergunta do banco de dados...</h2>
+        <div class="options-grid" id="options-container">
+          <button class="option-btn answer" onclick="checkAnswer(0)"><span>Opção 1</span></button>
+          <button class="option-btn answer" onclick="checkAnswer(1)"><span>Opção 2</span></button>
+          <button class="option-btn answer" onclick="checkAnswer(2)"><span>Opção 3</span></button>
+          <button class="option-btn answer" onclick="checkAnswer(3)"><span>Opção 4</span></button>
+        </div>
+      </div>
+    </div>
+  </section>

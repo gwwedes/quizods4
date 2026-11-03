@@ -1,0 +1,74 @@
+<section id="view-dashboard" class="view-section">
+    <div class="dashboard-container">
+      
+      <div class="dashboard-header">
+        <div>
+          <h1 class="dash-title"><i class="fa-solid fa-chart-line"></i> Dashboard de Desempenho</h1>
+          <p class="dash-subtitle">Visualização de estatísticas do banco de dados e análises comparativas</p>
+        </div>
+        <button class="btn btn-primary" onclick="openLoginModal()"><i class="fa-solid fa-rotate-right"></i> Jogar Novamente</button>
+      </div>
+  
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-icon yellow"><i class="fa-solid fa-trophy"></i></div>
+          <div class="kpi-info">
+            <span class="kpi-title">Pontuação Atual</span>
+            <span class="kpi-value" id="score">0</span>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon teal"><i class="fa-solid fa-medal"></i></div>
+          <div class="kpi-info">
+            <span class="kpi-title">Recorde Pessoal</span>
+            <span class="kpi-value" id="high-score">0</span>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon blue"><i class="fa-solid fa-bullseye"></i></div>
+          <div class="kpi-info">
+            <span class="kpi-title">Aproveitamento</span>
+            <span class="kpi-value" id="dash-accuracy">0%</span>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon purple"><i class="fa-solid fa-ranking-star"></i></div>
+          <div class="kpi-info">
+            <span class="kpi-title">Posição no Ranking</span>
+            <span class="kpi-value" id="dash-rank">#1</span>
+          </div>
+        </div>
+      </div>
+  
+      <div class="charts-grid">
+        <div class="chart-card wide">
+          <div class="chart-header">
+            <h3><i class="fa-solid fa-chart-area"></i> Evolução em Onda</h3>
+            <span class="subtext">Acompanhamento contínuo vs Média Global</span>
+          </div>
+          <div class="chart-wrapper">
+            <canvas id="waveChart"></canvas>
+          </div>
+        </div>
+  
+        <div class="chart-card">
+          <div class="chart-header">
+            <h3><i class="fa-solid fa-chart-pie"></i> Proporção de Acertos</h3>
+          </div>
+          <div class="chart-wrapper">
+            <canvas id="doughnutChart"></canvas>
+          </div>
+        </div>
+  
+        <div class="chart-card">
+          <div class="chart-header">
+            <h3><i class="fa-solid fa-chart-column"></i> Média Geral</h3>
+          </div>
+          <div class="chart-wrapper">
+            <canvas id="topicBarChart"></canvas>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </section>
